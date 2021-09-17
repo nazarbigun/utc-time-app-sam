@@ -7,20 +7,20 @@ on:
       - 'feature**'
 
 env:
-  PIPELINE_USER_ACCESS_KEY_ID: ${{ secrets.rw95kMhwoqm2spiOY6xc }}
-  PIPELINE_USER_SECRET_ACCESS_KEY: ${{ secrets.UZEskseA2bDJdH1FzY4i }}
+  PIPELINE_USER_ACCESS_KEY_ID: ${{ secrets.CI_PROD_KEY }}
+  PIPELINE_USER_SECRET_ACCESS_KEY: ${{ secrets.CI_STAGE_KEY }}
   SAM_TEMPLATE: template.yml
-  TESTING_STACK_NAME: stage
+  TESTING_STACK_NAME: sam-app
   TESTING_PIPELINE_EXECUTION_ROLE: arn:aws:iam::513707746297:role/aws-sam-cli-managed-stage-pi-PipelineExecutionRole-1L9RZ7WGQ7EPI
   TESTING_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::513707746297:role/aws-sam-cli-managed-stage-CloudFormationExecutionR-1NC9XMGIUHDWN
   TESTING_ARTIFACTS_BUCKET: aws-sam-cli-managed-stage-pipelin-artifactsbucket-1ks7ywh3o3s3e
   TESTING_IMAGE_REPOSITORY: 513707746297.dkr.ecr.eu-central-1.amazonaws.com/aws-sam-cli-managed-stage-pipeline-resources-imagerepository-gqnfcdnuqa1p
   TESTING_REGION: eu-central-1
-  PROD_STACK_NAME: prod
-  PROD_PIPELINE_EXECUTION_ROLE: arn:aws:iam::513707746297:role/aws-sam-cli-managed-stage-pi-PipelineExecutionRole-1L9RZ7WGQ7EPI
-  PROD_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::513707746297:role/aws-sam-cli-managed-stage-CloudFormationExecutionR-1NC9XMGIUHDWN
-  PROD_ARTIFACTS_BUCKET: aws-sam-cli-managed-stage-pipelin-artifactsbucket-1ks7ywh3o3s3e
-  PROD_IMAGE_REPOSITORY: 513707746297.dkr.ecr.eu-central-1.amazonaws.com/aws-sam-cli-managed-stage-pipeline-resources-imagerepository-gqnfcdnuqa1p
+  PROD_STACK_NAME: sam-app-prod
+  PROD_PIPELINE_EXECUTION_ROLE: arn:aws:iam::513707746297:role/aws-sam-cli-managed-prod-pip-PipelineExecutionRole-1WY6DXDMN0TMA
+  PROD_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::513707746297:role/aws-sam-cli-managed-prod-CloudFormationExecutionR-XKU2VS0OPMAE
+  PROD_ARTIFACTS_BUCKET: aws-sam-cli-managed-prod-pipeline-artifactsbucket-1wfuphecbehkn
+  PROD_IMAGE_REPOSITORY: 513707746297.dkr.ecr.eu-central-1.amazonaws.com/aws-sam-cli-managed-prod-pipeline-resources-imagerepository-vgmdo1vkkiqm
   PROD_REGION: eu-central-1
 
 jobs:
