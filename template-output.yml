@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: utc-time-app-init
+Transform:
+- AWS::Serverless-2016-10-31
+Parameters:
+  Token:
+    Type: String
+    Description: Auth token
+    NoEcho: true
+Resources:
+  getUtcTimeFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: makefile
+    Properties:
+      CodeUri: s3://utc-time-fn-artifacts/ef4c9530ec66c358707e67d75416bc9a
+      Handler: dist/src/handlers/get-utc-time.handler
+      Runtime: nodejs12.x
+      MemorySize: 128
+      Timeout: 100
+      Description: A simple example includes a HTTP get method to get utc time
+      AutoPublishAlias: version
+      DeploymentPreference:
+        Type: AllAtOnce
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /utc-time
+            Method: GET
+            Auth:
+              DefaultAuthorizer: MyLambdaTokenAuthorizer
+              Authorizers:
+                MyLambdaTokenAuthorizer:
+                  FunctionArn:
+                    Fn::GetAtt:
+                    - myAuthFunction
+                    - Arn
+  myAuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://utc-time-fn-artifacts/805ebfaf8b66471273a9c85c1c45f30d
+      Handler: dist/src/handlers/auth.handler
+      Runtime: nodejs12.x
+      AutoPublishAlias: version
+      DeploymentPreference:
+        Type: AllAtOnce
+      Environment:
+        Variables:
+          TOKEN:
+            Ref: Token
+  authToken:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: /utcDate/token
+      SecretString:
+        Ref: Token
+Outputs:
+  WebEndpoint:
+    Description: API Gateway endpoint URL for Prod stage
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
