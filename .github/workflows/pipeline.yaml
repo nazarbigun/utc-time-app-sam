@@ -7,10 +7,10 @@ on:
       - 'feature**'
 
 env:
-  PIPELINE_USER_ACCESS_KEY_ID: ${{ secrets.CI_PROD_KEY }}
-  PIPELINE_USER_SECRET_ACCESS_KEY: ${{ secrets.CI_STAGE_KEY }}
+  PIPELINE_USER_ACCESS_KEY_ID: ${{ secrets.CI_PUBLIC_KEY }}
+  PIPELINE_USER_SECRET_ACCESS_KEY: ${{ secrets.CI_SECRET_KEY }}
   SAM_TEMPLATE: template.yml
-  TESTING_STACK_NAME: sam-app
+  TESTING_STACK_NAME: sam-app-stage
   TESTING_PIPELINE_EXECUTION_ROLE: arn:aws:iam::513707746297:role/aws-sam-cli-managed-stage-pi-PipelineExecutionRole-1L9RZ7WGQ7EPI
   TESTING_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::513707746297:role/aws-sam-cli-managed-stage-CloudFormationExecutionR-1NC9XMGIUHDWN
   TESTING_ARTIFACTS_BUCKET: aws-sam-cli-managed-stage-pipelin-artifactsbucket-1ks7ywh3o3s3e
