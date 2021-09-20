@@ -64,6 +64,7 @@ jobs:
             --image-repository ${TESTING_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
             --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE}
+            --parameter-overrides 'Token= ${{secrets.TOKEN}}'
 
   build-and-package:
     if: github.ref == 'refs/heads/master'
