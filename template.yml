@@ -12,12 +12,6 @@ Description: >-
 Transform:
 - AWS::Serverless-2016-10-31
 
-Parameters:
-  Token:
-    Type: String
-    Description: Auth token
-    NoEcho: true
-
 # Resources declares the AWS resources that you want to include in the stack
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html
 Resources:
@@ -61,12 +55,7 @@ Resources:
         Type: AllAtOnce
       Environment:
         Variables:
-          TOKEN: !Ref Token
-  authToken:
-    Type: AWS::SecretsManager::Secret
-    Properties:
-      Name: /utcDate/token1
-      SecretString: !Ref Token
+          SECRET_NAME: /utcDate/token
 
 Outputs:
   WebEndpoint:

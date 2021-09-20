@@ -64,8 +64,7 @@ jobs:
             --s3-bucket ${TESTING_ARTIFACTS_BUCKET} \
             --image-repository ${TESTING_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
-            --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE} \
-            --parameter-overrides 'Token=${{ env.TOKEN }}'
+            --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE}
 
   build-and-package:
     if: github.ref == 'refs/heads/master'
@@ -159,8 +158,7 @@ jobs:
             --s3-bucket ${TESTING_ARTIFACTS_BUCKET} \
             --image-repository ${TESTING_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
-            --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE} \
-            --parameter-overrides 'Token=${{ env.TOKEN }}'
+            --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE}
 
   integration-test:
     if: github.ref == 'refs/heads/master'
@@ -206,5 +204,4 @@ jobs:
             --s3-bucket ${PROD_ARTIFACTS_BUCKET} \
             --image-repository ${PROD_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
-            --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE} \
-            --parameter-overrides 'Token=${{ env.TOKEN }}'
+            --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE}

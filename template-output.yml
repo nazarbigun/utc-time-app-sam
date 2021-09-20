@@ -2,18 +2,13 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: utc-time-app-init
 Transform:
 - AWS::Serverless-2016-10-31
-Parameters:
-  Token:
-    Type: String
-    Description: Auth token
-    NoEcho: true
 Resources:
   getUtcTimeFunction:
     Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: makefile
     Properties:
-      CodeUri: s3://utc-time-fn-artifacts/ef4c9530ec66c358707e67d75416bc9a
+      CodeUri: s3://utc-time-fn-artifacts/8d269067d3c2abec7d47831d09046e0d
       Handler: dist/src/handlers/get-utc-time.handler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -39,7 +34,7 @@ Resources:
   myAuthFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://utc-time-fn-artifacts/805ebfaf8b66471273a9c85c1c45f30d
+      CodeUri: s3://utc-time-fn-artifacts/7a106dac8cf0a39030251fe57f2a6ff6
       Handler: dist/src/handlers/auth.handler
       Runtime: nodejs12.x
       AutoPublishAlias: version
@@ -47,14 +42,7 @@ Resources:
         Type: AllAtOnce
       Environment:
         Variables:
-          TOKEN:
-            Ref: Token
-  authToken:
-    Type: AWS::SecretsManager::Secret
-    Properties:
-      Name: /utcDate/token
-      SecretString:
-        Ref: Token
+          SECRET_NAME: /utcDate/token
 Outputs:
   WebEndpoint:
     Description: API Gateway endpoint URL for Prod stage
