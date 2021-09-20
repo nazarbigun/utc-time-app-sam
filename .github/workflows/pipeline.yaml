@@ -65,7 +65,7 @@ jobs:
             --image-repository ${TESTING_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
             --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE} \
-            --parameter-overrides 'Token= ${{ env.TOKEN }}'
+            --parameter-overrides 'Token=${{ env.TOKEN }}'
 
   build-and-package:
     if: github.ref == 'refs/heads/master'
@@ -160,7 +160,7 @@ jobs:
             --image-repository ${TESTING_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
             --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE} \
-            --parameter-overrides 'Token= ${{ env.TOKEN }}'
+            --parameter-overrides 'Token=${{ env.TOKEN }}'
 
   integration-test:
     if: github.ref == 'refs/heads/master'
@@ -207,4 +207,4 @@ jobs:
             --image-repository ${PROD_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
             --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE} \
-            --parameter-overrides 'Token= ${{ env.TOKEN }}'
+            --parameter-overrides 'Token=${{ env.TOKEN }}'
