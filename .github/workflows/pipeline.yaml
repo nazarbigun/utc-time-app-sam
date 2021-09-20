@@ -159,6 +159,7 @@ jobs:
             --image-repository ${TESTING_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
             --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE}
+            --parameter-overrides 'Token= ${{secrets.TOKEN}}'
 
   integration-test:
     if: github.ref == 'refs/heads/master'
@@ -205,3 +206,4 @@ jobs:
             --image-repository ${PROD_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
             --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE}
+            --parameter-overrides 'Token= ${{secrets.TOKEN}}'
