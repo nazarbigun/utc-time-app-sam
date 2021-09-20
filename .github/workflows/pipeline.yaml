@@ -30,7 +30,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          # trigger the tests here
+        npm --prefix ./app/ run test
+        npm --prefix ./auth/ run test
 
   build-and-deploy-feature:
     # this stage is triggered only for feature branches (feature*),

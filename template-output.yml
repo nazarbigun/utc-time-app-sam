@@ -2,13 +2,16 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: utc-time-app-init
 Transform:
 - AWS::Serverless-2016-10-31
+Globals:
+  Api:
+    OpenApiVersion: 3.0.1
 Resources:
   getUtcTimeFunction:
     Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: makefile
     Properties:
-      CodeUri: s3://utc-time-fn-artifacts/8d269067d3c2abec7d47831d09046e0d
+      CodeUri: s3://utc-time-fn-artifacts/8f5c931b9726c2500247682807f8b136
       Handler: dist/src/handlers/get-utc-time.handler
       Runtime: nodejs12.x
       MemorySize: 128
@@ -23,6 +26,8 @@ Resources:
           Properties:
             Path: /utc-time
             Method: GET
+            RestApiId:
+              Ref: MyApi
             Auth:
               DefaultAuthorizer: MyLambdaTokenAuthorizer
               Authorizers:
@@ -31,10 +36,14 @@ Resources:
                     Fn::GetAtt:
                     - myAuthFunction
                     - Arn
+  MyApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: v1
   myAuthFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://utc-time-fn-artifacts/7a106dac8cf0a39030251fe57f2a6ff6
+      CodeUri: s3://utc-time-fn-artifacts/33fb412ed31547b7460e78650ea99260
       Handler: dist/src/handlers/auth.handler
       Runtime: nodejs12.x
       AutoPublishAlias: version
@@ -43,8 +52,3 @@ Resources:
       Environment:
         Variables:
           SECRET_NAME: /utcDate/token
-Outputs:
-  WebEndpoint:
-    Description: API Gateway endpoint URL for Prod stage
-    Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
