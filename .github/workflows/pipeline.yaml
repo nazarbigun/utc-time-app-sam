@@ -22,6 +22,7 @@ env:
   PROD_ARTIFACTS_BUCKET: aws-sam-cli-managed-prod-pipeline-artifactsbucket-1wfuphecbehkn
   PROD_IMAGE_REPOSITORY: 513707746297.dkr.ecr.eu-central-1.amazonaws.com/aws-sam-cli-managed-prod-pipeline-resources-imagerepository-vgmdo1vkkiqm
   PROD_REGION: eu-central-1
+  TOKEN: ${{ secrets.TOKEN }}
 
 jobs:
   test:
@@ -63,8 +64,8 @@ jobs:
             --s3-bucket ${TESTING_ARTIFACTS_BUCKET} \
             --image-repository ${TESTING_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
-            --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE}
-            --parameter-overrides 'Token= ${{secrets.TOKEN}}'
+            --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE} \
+            --parameter-overrides 'Token= ${{ env.TOKEN }}'
 
   build-and-package:
     if: github.ref == 'refs/heads/master'
@@ -158,8 +159,8 @@ jobs:
             --s3-bucket ${TESTING_ARTIFACTS_BUCKET} \
             --image-repository ${TESTING_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
-            --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE}
-            --parameter-overrides 'Token= ${{secrets.TOKEN}}'
+            --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE} \
+            --parameter-overrides 'Token= ${{ env.TOKEN }}'
 
   integration-test:
     if: github.ref == 'refs/heads/master'
@@ -205,5 +206,5 @@ jobs:
             --s3-bucket ${PROD_ARTIFACTS_BUCKET} \
             --image-repository ${PROD_IMAGE_REPOSITORY} \
             --no-fail-on-empty-changeset \
-            --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE}
-            --parameter-overrides 'Token= ${{secrets.TOKEN}}'
+            --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE} \
+            --parameter-overrides 'Token= ${{ env.TOKEN }}'
