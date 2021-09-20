@@ -5,7 +5,6 @@ import { AuthorizerPolicyResponse } from '../common/apigateway/authorizer-policy
 export class AuthApp {
   async run(event: AuthApigatewayEvent): Promise<AuthorizerPolicyResponse> {
     const authHeader = event.authorizationToken;
-
     try {
       const client = new SecretsManager({
         region: process.env.AWS_REGION // Your region

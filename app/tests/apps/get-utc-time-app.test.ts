@@ -14,7 +14,7 @@ global.Date = MockDate as unknown as typeof Date;
 
 describe('GetUtcTimeApp instance', () => {
     describe('run', () => {
-        it('repository is called to get a record by id', async () => {
+        it('repository is called to get a UTC time', async () => {
             const app = new GetUtcTimeApp();
             const response: ApiGatewayResponse = await app.run();
 

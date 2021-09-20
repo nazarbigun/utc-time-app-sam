@@ -6,8 +6,9 @@
     "strict": true,
     "typeRoots": [
       "node_modules/@types"
-    ],                       
+    ],
     "types": [
+      "jest",
       "node"
     ],
     "inlineSourceMap": true,

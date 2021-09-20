@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+exports[`GetUtcTimeApp instance run should return authorized policy 1`] = `
+Object {
+  "policyDocument": Object {
+    "Statement": Array [
+      Object {
+        "Action": "execute-api:Invoke",
+        "Effect": "Allow",
+        "Resource": "arn:aws:resource:region:user_id:key:some_id",
+      },
+    ],
+    "Version": "2012-10-17",
+  },
+  "principalId": "user",
+}
+`;
+
+exports[`GetUtcTimeApp instance run should return not authorized policy 1`] = `
+Object {
+  "policyDocument": Object {
+    "Statement": Array [
+      Object {
+        "Action": "execute-api:Invoke",
+        "Effect": "Deny",
+        "Resource": "arn:aws:resource:region:user_id:key:some_id",
+      },
+    ],
+    "Version": "2012-10-17",
+  },
+  "principalId": "user",
+}
+`;
