@@ -29,10 +29,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-        npm --prefix ./app/ run test
-      - run: |
-        npm --prefix ./auth/ run test
+      - name: install dependencies and build
+        run: |
+          npm --prefix ./app/ ci
+          npm --prefix ./app/ run compile
+          npm --prefix ./auth/ ci
+          npm --prefix ./auth/ run compile
+        env:
+          CI: true
+      - name: unit tests
+        run: |
+          npm --prefix ./app/ run test
+          npm --prefix ./auth/ run test
+        env:
+          CI: true
 
   build-and-deploy-feature:
     # this stage is triggered only for feature branches (feature*),
