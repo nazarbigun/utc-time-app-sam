@@ -1,4 +1,4 @@
-build-getUtcTimeFunction:
+build-myAuthFunction:
 	npm install
 # workaround https://github.com/aws/aws-sam-cli/issues/2565
 	npm rebuild
