@@ -49,6 +49,8 @@ Resources:
     Properties:
       StageName: v1
   myAuthFunction:
+    Metadata:
+      BuildMethod: makefile
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: auth/
