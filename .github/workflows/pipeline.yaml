@@ -30,11 +30,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: install dependencies and build
-      run: |
-        npm --prefix ./app/ ci
-        npm --prefix ./app/ run compile
-        npm --prefix ./auth/ ci
-        npm --prefix ./auth/ run compile
+        run: |
+          npm --prefix ./app/ ci
+          npm --prefix ./app/ run compile
+          npm --prefix ./auth/ ci
+          npm --prefix ./auth/ run compile
       env:
         CI: true
 
