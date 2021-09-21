@@ -1,6 +1,6 @@
-# utc-time-app-init
+# UTC Time App
 
-This project is created to get UTC time written in TypeScript using the [Serverless Application Model (SAM)](https://github.com/awslabs/serverless-application-model).
+This project is created to get UTC time. Written in TypeScript using the [Serverless Application Model (SAM)](https://github.com/awslabs/serverless-application-model).
 
 This project includes two AWS Lambda functions, one for getting UTC time and the second one is the API authorizer. It includes [SAM](https://github.com/awslabs/serverless-application-model) configuration to deploy to AWS. 
 
@@ -9,7 +9,7 @@ This project includes two AWS Lambda functions, one for getting UTC time and the
 ### Build
 
 #### UTC Time lambda fn:
-To build UTC lambda fn you have to execute the following commands:
+To build UTC lambda fn you have to execute the following commands from the root directory:
 ```
 cd app // Change directory
 npm i  // install dependencies
@@ -32,7 +32,8 @@ Prerequisites:
 * Docker [Install the Docker](https://docs.docker.com/get-docker/)
 * SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 * GNU Make On Windows, you can use [Chocolatey](https://chocolatey.org/) to install Make by running `choco install make`
-* Execute the following command to run API locally:
+
+Execute the following command to run API locally:
 ```
   $ sam local start-api
 ```
@@ -50,7 +51,8 @@ Both the `compile` and the `test` commands will _always_ run the `lint` process.
 
 ### Deploy
 #### Deploy to env
-To deploy changes simply push changes to origin master branch and it will automatically trigger CI/CD using GitHub actions and sam deploy and deploy to two environments ```stage``` and ```prod```
+To deploy changes simply push changes to origin master branch and it will automatically trigger CI/CD
+using GitHub actions and SAM deploy and deploy to two environments ```stage``` and ```prod```
 
 #### Deploy manually to new env
 
