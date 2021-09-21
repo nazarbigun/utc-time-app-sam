@@ -35,8 +35,8 @@ jobs:
           npm --prefix ./app/ run compile
           npm --prefix ./auth/ ci
           npm --prefix ./auth/ run compile
-      env:
-        CI: true
+        env:
+          CI: true
 
   test:
     needs: [build]
