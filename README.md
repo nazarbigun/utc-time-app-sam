@@ -1,6 +1,7 @@
+![Pipeline](https://github.com/nazarbigun/utc-time-app-sam/actions/workflows/pipeline.yaml/badge.svg)
 # UTC Time App
 
-This project is created to get UTC time. Written in TypeScript using the [Serverless Application Model (SAM)](https://github.com/awslabs/serverless-application-model).
+This project is created to get UTC time. Written in TypeScript using the [Serverless Application Model (SAM)](https://github.com/awslabs/serverless-application-model) for deployment.
 
 This project includes two AWS Lambda functions, one for getting UTC time and the second one is the API authorizer. It includes [SAM](https://github.com/awslabs/serverless-application-model) configuration to deploy to AWS. 
 
@@ -33,9 +34,14 @@ Prerequisites:
 * SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 * GNU Make On Windows, you can use [Chocolatey](https://chocolatey.org/) to install Make by running `choco install make`
 
-Execute the following command to run API locally:
+Make sure Docker is installed and running. \
+Then execute the following command to run API locally:
 ```
   $ sam local start-api
+```
+Once API is started locally you can call:
+```
+http://localhost:3000/utc-time GET
 ```
 
 ### Test

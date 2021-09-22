@@ -8,7 +8,7 @@ export class AuthApp {
 
     try {
       const client = new SecretsManager({
-        region: process.env.AWS_REGION // Your region
+        region: process.env.AWS_REGION
       });
 
       const command = new GetSecretValueCommand({ SecretId: process.env.SECRET_NAME });
