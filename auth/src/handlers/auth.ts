@@ -5,6 +5,6 @@ import { AuthorizerPolicyResponse } from '../common/apigateway/authorizer-policy
 export const handler = async (event: AuthApigatewayEvent): Promise<AuthorizerPolicyResponse> => {
     const app = new AuthApp();
 
-    console.log('Running the AuthApp');
+    console.log('Running the Auth fn.');
     return app.run(event);
 };

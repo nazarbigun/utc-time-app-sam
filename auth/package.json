@@ -1,11 +1,8 @@
 {
-  "name": "web_template",
+  "name": "authorizer-fn",
   "version": "1.0.0",
-  "author": "SAM CLI",
+  "author": "Nazar Bigun",
   "license": "MIT",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
     "fast-compile": "tsc",
     "compile": "eslint . --ext .ts && tsc",
