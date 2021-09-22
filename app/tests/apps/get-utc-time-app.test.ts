@@ -1,6 +1,3 @@
-import 'mocha';
-import { expect } from 'chai';
-
 import { GetUtcTimeApp } from '../../src/apps/get-utc-time-app';
 import { ApiGatewayResponse } from '../../src/common/apigateway/apigateway-response';
 
@@ -19,7 +16,7 @@ describe('GetUtcTimeApp instance', () => {
             const response: ApiGatewayResponse = await app.run();
 
             const responseTodo = JSON.parse(response.body as string);
-            expect(responseTodo.time).to.equal('3:24:47');
+            expect(responseTodo.time).toEqual('3:24:47');
         });
     });
 });

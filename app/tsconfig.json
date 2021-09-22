@@ -8,7 +8,8 @@
       "node_modules/@types"
     ],
     "types": [
-      "node"
+      "node",
+      "jest"
     ],
     "inlineSourceMap": true,
     "esModuleInterop": true,
